@@ -2,7 +2,7 @@ use utf8;
 use strict;
 use warnings;
 use open ':std', ':encoding(utf8)';
-use Test::More tests => 1;
+use Test::More tests => 2;
 
 use Try::Tiny;
 use WebService::Naver::TTS;
@@ -25,4 +25,16 @@ SKIP: {
     };
 
     ok( $mp3, 'tts' );
+
+    $mp3 = undef;
+    $mp3 = try {
+        $client->tts( $text, DIR => '.' );
+    }
+    catch {
+        chomp $_;
+        diag("$_\n");
+        return;
+    };
+
+    ok( $mp3, 'tts with tempfile options' );
 }
