@@ -2,7 +2,7 @@ use utf8;
 use strict;
 use warnings;
 use open ':std', ':encoding(utf8)';
-use Test::More tests => 2;
+use Test::More tests => 1;
 
 use Try::Tiny;
 use WebService::Naver::TTS;
